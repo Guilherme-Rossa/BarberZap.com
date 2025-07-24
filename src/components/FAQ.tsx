@@ -6,37 +6,45 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "Como funciona a integração com o WhatsApp?",
-      answer: "Conectamos diretamente com sua conta do WhatsApp Business através da API oficial. Seus clientes conversam normalmente e nossa IA responde de forma natural e inteligente, como se fosse você mesmo."
-    },
-    {
-      question: "A IA realmente entende diferentes tipos de solicitação?",
-      answer: "Sim! Nossa IA é treinada especificamente para barbearias e entende pedidos como 'quero cortar o cabelo', 'preciso de barba', 'tenho que remarcar', e muito mais. Ela aprende com cada conversa."
-    },
-    {
-      question: "E se o cliente fizer uma pergunta que a IA não sabe responder?",
-      answer: "Quando a IA não consegue resolver, ela transfere automaticamente para você com todo o contexto da conversa. Você nunca perde o controle do atendimento."
-    },
-    {
-      question: "Posso personalizar as respostas da IA?",
-      answer: "Claro! Você pode personalizar o tom de voz, horários de funcionamento, serviços oferecidos, preços e muito mais. A IA vai falar exatamente como você configurar."
-    },
-    {
-      question: "Como funciona a cobrança?",
-      answer: "Cobramos mensalmente via cartão de crédito ou PIX. Você pode cancelar quando quiser sem multa. Oferecemos 30 dias grátis para você testar sem compromisso."
-    },
-    {
-      question: "Funciona com mais de um barbeiro?",
-      answer: "Sim! Nos planos Professional e Enterprise você pode cadastrar múltiplos barbeiros, cada um com sua agenda própria. A IA gerencia tudo automaticamente."
-    },
-    {
-      question: "Meus dados estão seguros?",
-      answer: "Absolutamente! Usamos criptografia de ponta a ponta e seguimos todas as normas da LGPD. Seus dados e de seus clientes estão 100% protegidos."
-    },
-    {
-      question: "Preciso instalar algum aplicativo?",
-      answer: "Não! Tudo funciona pelo seu WhatsApp normal. Você só precisa acessar nosso painel web para configurar e acompanhar os resultados."
-    }
+    question: "Como funciona a integração com o WhatsApp?",
+    answer: "Nosso chatbot se conecta diretamente à sua conta do WhatsApp Business por meio da API oficial. Seus clientes mandam mensagem normalmente e a IA responde automaticamente como se fosse você, de forma natural e eficiente."
+  },
+  {
+    question: "Preciso instalar algum aplicativo para usar?",
+    answer: "Você não precisa instalar nada para usar o chatbot. O barbeiro apenas precisa ter o aplicativo do Google Agenda instalado no celular para acompanhar os agendamentos. Seus clientes continuam usando o WhatsApp normalmente."
+  },
+  {
+    question: "O cliente precisa instalar algum aplicativo?",
+    answer: "Não! O cliente conversa diretamente pelo WhatsApp, como de costume. Todo o atendimento é feito por lá, sem necessidade de baixar nenhum outro app."
+  },
+  {
+    question: "A IA entende pedidos diferentes?",
+    answer: "Sim! O chatbot é treinado especialmente para barbearias. Ele entende pedidos como 'quero cortar o cabelo', 'posso fazer barba amanhã?', ou 'quero remarcar meu horário', e muito mais."
+  },
+  {
+    question: "E se a IA não souber responder?",
+    answer: "Se surgir uma pergunta que o chatbot não conseguir responder, ele transfere a conversa automaticamente para você, com todo o histórico. Assim, você continua o atendimento sem perder o contexto."
+  },
+  {
+    question: "Posso configurar as respostas da IA?",
+    answer: "Sim! Você pode personalizar o tom de voz, os horários de funcionamento, os serviços, preços e outras informações da sua barbearia. A IA vai responder do jeito que você preferir."
+  },
+  {
+    question: "Como são os agendamentos?",
+    answer: "Os agendamentos feitos pelo cliente via WhatsApp são automaticamente salvos no Google Agenda do barbeiro. Você só precisa instalar o app do Google Agenda para acompanhar sua agenda atualizada em tempo real."
+  },
+  {
+    question: "Funciona com mais de um barbeiro?",
+    answer: "Sim! Você pode cadastrar vários barbeiros, cada um com sua agenda separada. O chatbot organiza os horários de forma automática, sem confusão."
+  },
+  {
+    question: "Meus dados estão protegidos?",
+    answer: "Com certeza. Usamos criptografia de ponta e seguimos a LGPD. Todas as informações suas e dos seus clientes estão totalmente seguras."
+  },
+  {
+    question: "Como funciona o pagamento?",
+    answer: "A cobrança é mensal, por cartão de crédito ou PIX. Você pode cancelar a qualquer momento, sem multas. Oferecemos 30 dias grátis para você testar a ferramenta."
+  }
   ];
 
   return (
