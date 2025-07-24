@@ -20,7 +20,7 @@ const Footer = () => {
               e foque no que realmente importa: seus clientes.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
+              <a href="https://www.instagram.com/barberzap.ia?igsh=eWN4OW1pcmpuaWN6&utm_source=qr" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
