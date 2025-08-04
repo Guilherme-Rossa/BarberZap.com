@@ -1,7 +1,90 @@
-import React from 'react';
-import { Bot, Calendar, MessageSquare, MessageCircle, Zap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Bot, Calendar, MessageSquare, Clock, User, Scissors, Check } from 'lucide-react';
 
 const Hero = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [selectedBarber, setSelectedBarber] = useState('');
+  const [selectedService, setSelectedService] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+
+  const barbeiros = [
+    { id: 1, name: 'João Silva', specialty: 'Especialista em cortes clássicos' },
+    { id: 2, name: 'Pedro Santos', specialty: 'Expert em barbas e bigodes' },
+    { id: 3, name: 'Carlos Lima', specialty: 'Cortes modernos e degradês' }
+  ];
+
+  const servicos = [
+    { id: 1, name: 'Corte', price: 'R$ 25', icon: '✂️' },
+    { id: 2, name: 'Barba', price: 'R$ 20', icon: '🧔' },
+    { id: 3, name: 'Corte + Barba', price: 'R$ 35', icon: '✂️🧔' },
+    { id: 4, name: 'Sobrancelha', price: 'R$ 15', icon: '👁️' },
+    { id: 5, name: 'Pigmentação', price: 'R$ 80', icon: '🎨' }
+  ];
+
+  const datas = [
+    { id: 1, day: 'Sex', date: '09/08', full: '09/08/2025' },
+    { id: 2, day: 'Sáb', date: '10/08', full: '10/08/2025' },
+    { id: 3, day: 'Seg', date: '12/08', full: '12/08/2025' },
+    { id: 4, day: 'Ter', date: '13/08', full: '13/08/2025' },
+    { id: 5, day: 'Qua', date: '14/08', full: '14/08/2025' }
+  ];
+
+  const horarios = [
+    '08:00', '08:45', '09:30', '10:15', '11:00', 
+    '13:30', '14:15', '15:00', '15:45', '16:30', '17:15', '18:00', '18:45'
+  ];
+
+  // Initialize with first message
+  useEffect(() => {
+    setCurrentStep(1);
+  }, []);
+
+  const handleStartChat = () => {
+    setCurrentStep(2);
+  };
+
+  const handleBarberSelect = (barber: any) => {
+    setSelectedBarber(barber.name);
+    setCurrentStep(3);
+  };
+
+  const handleServiceSelect = (service: any) => {
+    setSelectedService(`${service.name} - ${service.price}`);
+    setCurrentStep(4);
+  };
+
+  const handleDateSelect = (date: any) => {
+    setSelectedDate(date.full);
+    setCurrentStep(5);
+  };
+
+  const handleTimeSelect = (time: string) => {
+    setSelectedTime(time);
+    setCurrentStep(6);
+  };
+
+  const BotMessage = ({ text }: { text: string }) => (
+    <div className="flex items-start space-x-3 mb-4">
+      <div className="w-8 h-8 bg-gradient-to-r from-[#00D563] to-[#25D366] rounded-full flex items-center justify-center flex-shrink-0">
+        <Bot className="h-4 w-4 text-white" />
+      </div>
+      <div className="bg-gray-700 text-white p-3 rounded-lg rounded-bl-sm max-w-sm">
+        <p className="text-sm whitespace-pre-line">{text}</p>
+        <span className="text-xs opacity-75 block mt-1">agora</span>
+      </div>
+    </div>
+  );
+
+  const UserMessage = ({ text }: { text: string }) => (
+    <div className="flex justify-end mb-4">
+      <div className="max-w-sm bg-[#005C4B] text-white p-3 rounded-lg rounded-br-sm">
+        <p className="text-sm">{text}</p>
+        <span className="text-xs opacity-75 block mt-1 text-right">agora ✓✓</span>
+      </div>
+    </div>
+  );
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-[#0F4C3A] via-[#1A5D4A] to-[#0F4C3A] flex items-center overflow-hidden">
       {/* Background elements */}
@@ -13,6 +96,7 @@ const Hero = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Text content */}
           <div className="text-center lg:text-left" data-aos="fade-right">
             <div className="inline-flex items-center px-4 py-2 bg-[#00D563]/10 border border-[#00D563]/20 rounded-full mb-6">
               <Bot className="h-4 w-4 text-[#00D563] mr-2" />
@@ -57,9 +141,10 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Right side - Interactive Chat */}
           <div className="relative" data-aos="fade-left" data-aos-delay="200">
             <div className="absolute inset-0 bg-gradient-to-r from-[#00D563]/20 to-[#25D366]/20 rounded-3xl blur-xl transform rotate-1"></div>
-            <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl p-4 border border-gray-700/50 backdrop-blur-sm max-w-sm mx-auto">
+            <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl p-4 border border-gray-700/50 backdrop-blur-sm max-w-md mx-auto">
               {/* Header do Chat */}
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-700">
                 <div className="flex items-center space-x-3">
@@ -67,129 +152,165 @@ const Hero = () => {
                     <Bot className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold text-sm">Barbearia do João</h3>
+                    <h3 className="text-white font-semibold text-sm">Veja como seu cliente será atendido</h3>
                     <div className="flex items-center space-x-1">
                       <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                       <span className="text-xs text-gray-400">online</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex space-x-2 text-gray-400">
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                  <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-                </div>
               </div>
               
-              <div className="space-y-3 h-80 overflow-y-auto">
-                {/* Mensagem do Cliente */}
-                <div className="flex justify-end">
-                  <div className="max-w-xs bg-[#005C4B] text-white p-2 rounded-lg rounded-br-sm">
-                    <p className="text-sm">Oi, preciso agendar um horário 😊</p>
-                    <span className="text-xs opacity-75 block mt-1 text-right">14:32 ✓✓</span>
-                  </div>
-                </div>
+              {/* Chat Messages */}
+              <div className="h-96 overflow-y-auto space-y-4 mb-4">
+                {/* Step 1: Welcome */}
+                {currentStep >= 1 && (
+                  <BotMessage text="💬 Olá! Bem-vindo à nossa barbearia! Vamos agendar seu horário em poucos cliques?" />
+                )}
 
-                {/* Resposta da IA */}
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-gradient-to-r from-[#00D563] to-[#25D366] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="h-3 w-3 text-white" />
+                {currentStep === 1 && (
+                  <div className="mb-4">
+                    <button
+                      onClick={handleStartChat}
+                      className="w-full bg-[#00D563] hover:bg-[#00C555] text-white p-3 rounded-lg transition-colors text-sm font-semibold"
+                    >
+                      🚀 Vamos começar!
+                    </button>
                   </div>
-                  <div className="max-w-xs bg-gray-700 text-white p-2 rounded-lg rounded-bl-sm">
-                    <p className="text-sm">Olá! Que bom te ver aqui! 😊</p>
-                    <p className="text-sm mt-1">Qual serviço você gostaria de agendar?</p>
-                    <div className="flex flex-wrap gap-1 mt-2">
-                      <span className="bg-[#00D563] text-xs px-2 py-1 rounded-full">✂️ Corte</span>
-                      <span className="bg-[#00D563] text-xs px-2 py-1 rounded-full">🧔 Barba</span>
-                      <span className="bg-[#00D563] text-xs px-2 py-1 rounded-full">✂️🧔 Completo</span>
-                    </div>
-                    <span className="text-xs opacity-75 block mt-1">14:32</span>
-                  </div>
-                </div>
+                )}
 
-                {/* Mensagem do Cliente */}
-                <div className="flex justify-end">
-                  <div className="max-w-xs bg-[#005C4B] text-white p-2 rounded-lg rounded-br-sm">
-                    <p className="text-sm">Quero corte + barba</p>
-                    <span className="text-xs opacity-75 block mt-1 text-right">14:33 ✓✓</span>
-                  </div>
-                </div>
+                {/* Step 2: User starts */}
+                {currentStep >= 2 && (
+                  <UserMessage text="🚀 Vamos começar!" />
+                )}
 
-                {/* Resposta da IA com horários */}
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-gradient-to-r from-[#00D563] to-[#25D366] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="h-3 w-3 text-white" />
-                  </div>
-                  <div className="max-w-xs">
-                    <div className="bg-gray-700 text-white p-2 rounded-lg rounded-bl-sm mb-2">
-                      <p className="text-sm">Perfeito! Corte + Barba = R$ 35,00</p>
-                      <p className="text-sm mt-1">Qual horário prefere? 📅</p>
-                      <span className="text-xs opacity-75 block mt-1">14:33</span>
-                    </div>
-                    <div className="space-y-1">
-                      <button className="block w-full bg-[#00D563] hover:bg-[#00C555] text-white px-2 py-1 rounded text-xs transition-colors">
-                        📅 Hoje às 16:00
+                {/* Step 2: Choose barber */}
+                {currentStep >= 2 && (
+                  <BotMessage text="💬 Escolha seu barbeiro ideal 💇‍♂️&#10;👇 Clique abaixo para ver as opções de barbeiros disponíveis" />
+                )}
+
+                {currentStep === 2 && (
+                  <div className="space-y-2 mb-4">
+                    {barbeiros.map((barber) => (
+                      <button
+                        key={barber.id}
+                        onClick={() => handleBarberSelect(barber)}
+                        className="w-full bg-[#00D563] hover:bg-[#00C555] text-white p-3 rounded-lg text-left transition-colors text-sm"
+                      >
+                        <div className="font-semibold">{barber.name}</div>
+                        <div className="text-xs opacity-90">{barber.specialty}</div>
                       </button>
-                      <button className="block w-full bg-[#00D563] hover:bg-[#00C555] text-white px-2 py-1 rounded text-xs transition-colors">
-                        📅 Amanhã às 09:00
+                    ))}
+                  </div>
+                )}
+
+                {/* Step 3: User chooses barber */}
+                {currentStep >= 3 && selectedBarber && (
+                  <UserMessage text={`Escolho o ${selectedBarber}! 👨‍💼`} />
+                )}
+
+                {/* Step 3: Choose service */}
+                {currentStep >= 3 && (
+                  <BotMessage text="💬 Escolha o serviço ✂️&#10;👇 Veja abaixo as opções disponíveis e escolha o serviço ideal para você." />
+                )}
+
+                {currentStep === 3 && (
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    {servicos.map((service) => (
+                      <button
+                        key={service.id}
+                        onClick={() => handleServiceSelect(service)}
+                        className="bg-[#00D563] hover:bg-[#00C555] text-white p-2 rounded-lg transition-colors text-xs"
+                      >
+                        <div>{service.icon} {service.name}</div>
+                        <div className="font-semibold">{service.price}</div>
                       </button>
-                      <button className="block w-full bg-[#00D563] hover:bg-[#00C555] text-white px-2 py-1 rounded text-xs transition-colors">
-                        📅 Amanhã às 14:00
+                    ))}
+                  </div>
+                )}
+
+                {/* Step 4: User chooses service */}
+                {currentStep >= 4 && selectedService && (
+                  <UserMessage text={`Quero ${selectedService}! ✂️`} />
+                )}
+
+                {/* Step 4: Choose date */}
+                {currentStep >= 4 && (
+                  <BotMessage text="💬 Para qual dia você quer agendar?&#10;📅 Toque abaixo e selecione o dia da semana que você prefere 💈" />
+                )}
+
+                {currentStep === 4 && (
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    {datas.map((date) => (
+                      <button
+                        key={date.id}
+                        onClick={() => handleDateSelect(date)}
+                        className="bg-[#00D563] hover:bg-[#00C555] text-white p-2 rounded-lg transition-colors text-xs text-center"
+                      >
+                        <div className="font-semibold">{date.day}</div>
+                        <div>{date.date}</div>
                       </button>
-                    </div>
+                    ))}
                   </div>
-                </div>
+                )}
 
-                {/* Cliente escolhe horário */}
-                <div className="flex justify-end">
-                  <div className="max-w-xs bg-[#005C4B] text-white p-2 rounded-lg rounded-br-sm">
-                    <p className="text-sm">Amanhã às 14:00 tá perfeito!</p>
-                    <span className="text-xs opacity-75 block mt-1 text-right">14:34 ✓✓</span>
-                  </div>
-                </div>
+                {/* Step 5: User chooses date */}
+                {currentStep >= 5 && selectedDate && (
+                  <UserMessage text={`Prefiro o dia ${selectedDate}! 📅`} />
+                )}
 
-                {/* Confirmação da IA */}
-                <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-gradient-to-r from-[#00D563] to-[#25D366] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <Bot className="h-3 w-3 text-white" />
-                  </div>
-                  <div className="max-w-xs bg-gray-700 text-white p-2 rounded-lg rounded-bl-sm">
-                    <p className="text-sm">✅ <strong>Agendamento Confirmado!</strong></p>
-                    <div className="bg-gray-800 p-2 rounded mt-2 text-xs">
-                      <p>📅 <strong>Data:</strong> Amanhã (22/01)</p>
-                      <p>⏰ <strong>Horário:</strong> 14:00</p>
-                      <p>✂️ <strong>Serviço:</strong> Corte + Barba</p>
-                      <p>💰 <strong>Valor:</strong> R$ 35,00</p>
-                      <p>📍 <strong>Local:</strong> Barbearia do João</p>
-                    </div>
-                    <p className="text-xs mt-2 opacity-90">Vou te enviar um lembrete 1h antes! 😊</p>
-                    <span className="text-xs opacity-75 block mt-1">14:34</span>
-                  </div>
-                </div>
+                {/* Step 5: Choose time */}
+                {currentStep >= 5 && (
+                  <BotMessage text="💬 Esses são os horários disponíveis para o dia selecionado:&#10;🕐 Escolha um horário e clique no botão correspondente!" />
+                )}
 
-                {/* Indicador de digitação */}
-                <div className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-gradient-to-r from-[#00D563] to-[#25D366] rounded-full flex items-center justify-center mt-1">
-                    <Bot className="h-3 w-3 text-white" />
+                {currentStep === 5 && (
+                  <div className="grid grid-cols-3 gap-1 text-xs mb-4">
+                    {horarios.map((time, timeIndex) => (
+                      <button
+                        key={timeIndex}
+                        onClick={() => handleTimeSelect(time)}
+                        className="p-2 rounded transition-colors bg-gray-600 text-gray-300 hover:bg-gray-500"
+                      >
+                        ⏰ {time}
+                      </button>
+                    ))}
                   </div>
-                  <div className="bg-gray-700 p-2 rounded-lg rounded-bl-sm">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                )}
+
+                {/* Step 6: User chooses time */}
+                {currentStep >= 6 && selectedTime && (
+                  <UserMessage text={`Escolho às ${selectedTime}! ⏰`} />
+                )}
+
+                {/* Final summary */}
+                {currentStep >= 6 && selectedTime && (
+                  <div className="p-3 bg-[#00D563] rounded-lg text-white text-center">
+                    <div className="text-sm font-semibold mb-2">✅ Resumo do Agendamento</div>
+                    <div className="text-xs space-y-1">
+                      <div>👨‍💼 Barbeiro: {selectedBarber}</div>
+                      <div>✂️ Serviço: {selectedService}</div>
+                      <div>📅 Data: {selectedDate}</div>
+                      <div>⏰ Horário: {selectedTime}</div>
                     </div>
+                    <a 
+                      href={`https://wa.me/5547996772077?text=Olá! Quero agendar: ${selectedService} com ${selectedBarber} no dia ${selectedDate} às ${selectedTime}`}
+                      className="block mt-3 bg-white text-[#00D563] py-2 px-4 rounded-full text-sm font-semibold hover:shadow-lg transition-all"
+                    >
+                      Confirmar pelo WhatsApp 📱
+                    </a>
                   </div>
-                </div>
+                )}
               </div>
               
-              {/* Barra de digitação */}
-              <div className="mt-3 pt-3 border-t border-gray-700">
+              {/* Input area */}
+              <div className="border-t border-gray-700 pt-3">
                 <div className="flex items-center space-x-2">
                   <div className="flex-1 bg-gray-800 rounded-full px-3 py-2">
-                    <span className="text-gray-500 text-sm">Digite uma mensagem...</span>
+                    <span className="text-gray-500 text-sm">Interaja com os botões acima...</span>
                   </div>
                   <div className="w-8 h-8 bg-[#00D563] rounded-full flex items-center justify-center">
-                    <MessageCircle className="h-4 w-4 text-white" />
+                    <MessageSquare className="h-4 w-4 text-white" />
                   </div>
                 </div>
               </div>
