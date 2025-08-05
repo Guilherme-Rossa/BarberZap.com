@@ -7,27 +7,19 @@ const FAQ = () => {
   const faqs = [
     {
     question: "Como funciona a integração com o WhatsApp?",
-    answer: "Nosso chatbot se conecta diretamente à sua conta do WhatsApp Business por meio da API oficial. Seus clientes mandam mensagem normalmente e a IA responde automaticamente como se fosse você, de forma natural e eficiente."
+    answer: "Nosso chat se conecta diretamente à sua conta do WhatsApp Business por meio da API oficial. Seus clientes mandam mensagem normalmente e a IA responde automaticamente como se fosse você, de forma natural e eficiente."
   },
   {
     question: "Preciso instalar algum aplicativo para usar?",
-    answer: "Você não precisa instalar nada para usar o chatbot. O barbeiro apenas precisa ter o aplicativo do Google Agenda instalado no celular para acompanhar os agendamentos. Seus clientes continuam usando o WhatsApp normalmente."
+    answer: "Você não precisa instalar nada para usar o chat. O barbeiro apenas precisa ter o aplicativo do Google Agenda instalado no celular para acompanhar os agendamentos. Seus clientes continuam usando o WhatsApp normalmente."
   },
   {
     question: "O cliente precisa instalar algum aplicativo?",
     answer: "Não! O cliente conversa diretamente pelo WhatsApp, como de costume. Todo o atendimento é feito por lá, sem necessidade de baixar nenhum outro app."
   },
   {
-    question: "A IA entende pedidos diferentes?",
-    answer: "Sim! O chatbot é treinado especialmente para barbearias. Ele entende pedidos como 'quero cortar o cabelo', 'posso fazer barba amanhã?', ou 'quero remarcar meu horário', e muito mais."
-  },
-  {
-    question: "E se a IA não souber responder?",
-    answer: "Se surgir uma pergunta que o chatbot não conseguir responder, ele transfere a conversa automaticamente para você, com todo o histórico. Assim, você continua o atendimento sem perder o contexto."
-  },
-  {
-    question: "Posso configurar as respostas da IA?",
-    answer: "Sim! Você pode personalizar o tom de voz, os horários de funcionamento, os serviços, preços e outras informações da sua barbearia. A IA vai responder do jeito que você preferir."
+    question: "Posso configurar as respostas do CHAT?",
+    answer: "Sim! Você pode personalizar o tom de voz, os horários de funcionamento, os serviços, preços e outras informações da sua barbearia. O CHAT vai responder do jeito que você preferir."
   },
   {
     question: "Como são os agendamentos?",
