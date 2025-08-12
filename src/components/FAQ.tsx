@@ -35,7 +35,7 @@ const FAQ = () => {
   },
   {
     question: "Como funciona o pagamento?",
-    answer: "A cobrança é mensal, por cartão de crédito ou PIX. Você pode cancelar a qualquer momento, sem multas. Oferecemos 30 dias grátis para você testar a ferramenta."
+    answer: "A cobrança é mensal, por cartão de crédito ou PIX. Você pode cancelar a qualquer momento, sem multas. Oferecemos 7 dias grátis para você testar a ferramenta."
   }
   ];
 
