@@ -31,7 +31,7 @@ const Header = () => {
               alt="BarberZap Logo"
               className={`rounded-lg object-cover transition-all duration-300
                 ${isScrolled 
-                  ? 'w-20 sm:w-24 md:w-28 lg:w-32 h-auto' 
+                  ? 'w-24 sm:w-24 md:w-28 lg:w-32 h-auto' 
                   : 'w-24 sm:w-28 md:w-32 lg:w-36 h-auto'
                 } min-w-[90px]`}
             />
