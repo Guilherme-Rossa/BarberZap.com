@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <img 
-                src="/WhatsApp Image 2025-06-21 at 9.36.32 AM (1) copy.jpeg" 
+                src="/FAV ICON BARBER ZAP.png" 
                 alt="BarberZap Logo" 
                 className="h-10 w-10 rounded-lg object-cover"
               />
