@@ -30,9 +30,13 @@ const Header = () => {
               src="/LOGO BARBER ZAP 1.PNG"
               alt="BarberZap Logo"
               className={`rounded-lg object-cover transition-all duration-300
-                ${isScrolled ? 'w-[8vw] h-auto' : 'w-[12vw] h-auto'}`}
-              />
+                ${isScrolled 
+                  ? 'w-12 sm:w-14 md:w-16 lg:w-20 h-auto' 
+                  : 'w-16 sm:w-20 md:w-24 lg:w-28 h-auto'
+                }`}
+            />
           </div>
+
           
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#como-funciona" className="text-gray-700 hover:text-[#00D563] transition-colors">Como Funciona</a>
