@@ -27,15 +27,12 @@ const Header = () => {
         }`}>
           <div className="flex items-center space-x-2">
             <img 
-              src="/WhatsApp Image 2025-06-21 at 9.36.32 AM (1) copy.jpeg" 
+              src="/LOGO BARBER ZAP 1.PNG" 
               alt="BarberZap Logo" 
               className={`rounded-lg object-cover transition-all duration-300 ${
                 isScrolled ? 'h-8 w-8' : 'h-10 w-10'
               }`}
             />
-            <span className={`font-bold text-gray-900 transition-all duration-300 ${
-              isScrolled ? 'text-lg' : 'text-xl'
-            }`}>BarberZap</span>
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
