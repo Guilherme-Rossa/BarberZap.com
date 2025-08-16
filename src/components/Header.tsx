@@ -33,7 +33,7 @@ const Header = () => {
                 ${isScrolled 
                   ? 'w-20 sm:w-24 md:w-28 lg:w-32 h-auto' 
                   : 'w-24 sm:w-28 md:w-32 lg:w-36 h-auto'
-                } min-w-[80px]`}
+                } min-w-[90px]`}
             />
           </div>
 
