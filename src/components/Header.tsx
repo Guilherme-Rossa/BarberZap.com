@@ -27,12 +27,11 @@ const Header = () => {
         }`}>
           <div className="flex items-center space-x-2">
             <img 
-              src="/LOGO BARBER ZAP 1.PNG" with="80px" 
-              alt="BarberZap Logo" 
-              className={`rounded-lg object-cover transition-all duration-300 ${
-                isScrolled ? 'h-8 w-8' : 'h-10 w-10'
-              }`}
-            />
+              src="/LOGO BARBER ZAP 1.PNG"
+              alt="BarberZap Logo"
+              className={`rounded-lg object-cover transition-all duration-300
+                ${isScrolled ? 'w-[8vw] h-auto' : 'w-[12vw] h-auto'}`}
+              />
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
